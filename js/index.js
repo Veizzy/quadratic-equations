@@ -7,68 +7,101 @@ button.addEventListener(`click`, function() {
     let b = document.getElementById(`b`).value;
     let c = document.getElementById(`c`).value;
     let disc = b**2-4*a*c;
+    let xoneup, xonedown, xtwoup, xtwodown;
+    let xup, xdown;
+    let resx;
     let resxone;
     let resxtwo;
     console.log(`disc` + disc);
+    result.innerHTML = `Решение: <br>
+     (квадратное уравнение) <br> 
+     a=${a}; b=${b}; c=${c} <br>
+     D=b^2-4ac=${b}^2-4*${a}*${c}=${b**2}-${4*a*c}=${disc}
+     `
     if (disc > 0) {
+        //если больше нуля
+        result.innerHTML += ` > 0  два корня <br>`
+        //первый корень
+        result.innerHTML += `x1=(-b+√D)/2a=`
     if (calculate(disc) === true) {
+        //если можно извлечь
         console.log(`можно`);
-        let xoneup = -b+Math.sqrt(disc);
+         xoneup = -b+Math.sqrt(disc);
         console.log(`xoneup` + xoneup);
-        let xonedown = 2*a;
+         xonedown = 2*a;
     console.log(`xonedown` + xonedown);
+    result.innerHTML += `(${-b}+${Math.sqrt(disc)})/${xonedown}=${xoneup}/${xonedown}`
     if (xoneup % xonedown == 0) {
+        //если можно поделить без остатка
     resxone = xoneup/xonedown;
+    result.innerHTML += `=${resxone}`
        console.log(`resxone` + resxone);
     } else {
         resxone = `${xoneup}/${xonedown}`;
         console.log(`результат ${xoneup}/${xonedown}`);
     };
     } else {
-        let xoneup = `${-b}+√${disc}`;
+        //если нельзя извлечь
+         xoneup = `${-b}+√${disc}`;
         console.log(`нельзя!`);
-        let xonedown = 2*a;
+         xonedown = 2*a;
     console.log(`xonedown` + xonedown);
     console.log(`результат ${xoneup}/${xonedown}`);
      resxone = `(${xoneup})/${xonedown}`;
+     result.innerHTML += `${resxone}`;
     }
+    //второй корень
+    result.innerHTML += `<br>x2=(-b-√D)/2a=`
     if (calculate(disc) === true) {
+        //если можно извлечь
         console.log(`можно`);
-        let xtwoup = -b-Math.sqrt(disc);
+         xtwoup = -b-Math.sqrt(disc);
         console.log(`xtwoup` + xtwoup);
-        let xtwodown = 2*a;
+         xtwodown = 2*a;
+         result.innerHTML += `(${-b}-${Math.sqrt(disc)})/${xtwodown}=${xtwoup}/${xtwodown}`
     console.log(`xtwodown` + xtwodown);
     if (xtwoup % xtwodown == 0) {
+        //если можно поделить без остатка
          resxtwo = xtwoup/xtwodown;
         console.log(`resxtwo` + resxtwo);
+        result.innerHTML += `=${resxtwo}`
      } else {
          resxtwo = `${xtwoup}/${xtwodown}`;
          console.log(`результат ${xtwoup}/${xtwodown}`);
+         resxone = `${xtwoup}/${xtwodown}`;
      };
     } else {
-        let xtwoup = `${-b}-√${disc}`;
+         //если нельзя извлечь
+         xtwoup = `${-b}-√${disc}`;
         console.log(`нельзя!`);
-        let xtwodown = 2*a;
+         xtwodown = 2*a;
     console.log(`xtwodown` + xtwodown);
     console.log(`результат ${xtwoup}/${xtwodown}`);
      resxtwo = `(${xtwoup})/${xtwodown}`;
-    };
-    result.innerHTML = `ответ: x1=${resxone}; x2=${resxtwo}`
+     result.innerHTML += `${resxtwo}`;
+    }; //конец
+    result.innerHTML += `<br>Ответ: x1=${resxone}; x2=${resxtwo}`
     } else if (disc < 0) {
+        //если дискриминант меньше 0
+        result.innerHTML += ` < 0  корней нет <br> Ответ: корней нет`
         console.log(`корней нет`)
-        result.innerHTML = `ответ: корней нет`;
     } else {
-        let xup = -b;
+        //если равен 0
+        result.innerHTML += ` = 0  один корень <br>`
+        result.innerHTML += `x=-b/2*a=${-b}/${2*a}`
+         xup = -b;
         console.log(`xup` + xup);
-        let xdown = 2*a;
+         xdown = 2*a;
     console.log(`xdown` + xdown);
     if (xup % xdown == 0) {
-        let resx = xup/xdown;
+        //можно ли поделить без остатка
+         resx = xup/xdown;
+         result.innerHTML += `=${resx} <br>`
         console.log(`resx` + resx);
-        result.innerHTML = `ответ: ${resx}`
+        result.innerHTML += `<br>Ответ: ${resx}`
      } else {
          console.log(`результат ${xup}/${xdown}`);
-         result.innerHTML = `ответ: ${xup}/${xdown}`;
+        result.innerHTML += `<br>Ответ: ${xup}/${xdown}`;
      };
     };
 } );
@@ -76,4 +109,4 @@ function calculate(number)
 {
     let result = Math.sqrt(number);
     return (result % 1 === 0);
-}
+}5
