@@ -30,7 +30,7 @@ button.addEventListener(`click`, function() {
         let xonedown = 2*a;
     console.log(`xonedown` + xonedown);
     console.log(`результат ${xoneup}/${xonedown}`);
-     resxone = `${xoneup}/${xonedown}`;
+     resxone = `(${xoneup})/${xonedown}`;
     }
     if (calculate(disc) === true) {
         console.log(`можно`);
@@ -51,7 +51,7 @@ button.addEventListener(`click`, function() {
         let xtwodown = 2*a;
     console.log(`xtwodown` + xtwodown);
     console.log(`результат ${xtwoup}/${xtwodown}`);
-     resxtwo = `${xtwoup}/${xtwodown}`;
+     resxtwo = `(${xtwoup})/${xtwodown}`;
     };
     result.innerHTML = `ответ: x1=${resxone}; x2=${resxtwo}`
     } else if (disc < 0) {
