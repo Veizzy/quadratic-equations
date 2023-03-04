@@ -18,6 +18,7 @@ button.addEventListener(`click`, function() {
      a=${a}; b=${b}; c=${c} <br>
      D=b^2-4ac=${b}^2-4*${a}*${c}=${b**2}-${4*a*c}=${disc}
      `
+    if (a != 0) {
     if (disc > 0) {
         //если больше нуля
         result.innerHTML += ` > 0  два корня <br>`
@@ -104,9 +105,11 @@ button.addEventListener(`click`, function() {
         result.innerHTML += `<br>Ответ: ${xup}/${xdown}`;
      };
     };
+    } else {
+    result.innerHTML = `a не может быть равно 0!!`}
 } );
 function calculate(number)
 {
     let result = Math.sqrt(number);
     return (result % 1 === 0);
-}5
+}
